@@ -1,0 +1,25 @@
+<div class="col-8">
+    <div class="card">
+        <div class="card-header">
+            Login
+        </div>
+        <div class="card-body">
+            <form #loginForm="ngForm" (ngSubmit)="submitLogin()">
+              <div class="alert alert-danger" [hidden]="!error">
+                {{error}}
+              </div>  
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input name="email" [(ngModel)]="form.email" type="email" class="form-control" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input name="password" [(ngModel)]="form.password" type="password" class="form-control" id="password" placeholder="Password" required>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
