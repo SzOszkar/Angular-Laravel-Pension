@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class BookingController extends Controller
 {
@@ -15,7 +14,7 @@ class BookingController extends Controller
         $booking->first_name    = $data['first_name'];
         $booking->last_name     = $data['last_name'];
         $booking->room_id       = $data['room_id'];
-        $booking->user_id       = 1;
+        $booking->user_id       = auth()->user()->id;
         $booking->check_in      = date('Y-m-d H:i:s', strtotime($data['check_in']));
         $booking->check_out     = date('Y-m-d H:i:s', strtotime($data['check_out']));
         $booking->save();
