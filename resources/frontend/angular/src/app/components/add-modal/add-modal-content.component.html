@@ -8,39 +8,54 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="first_name">First Name</label>
-            <input type="text" name="first_name" class="form-control" [(ngModel)]="booking.first_name">
+            <input type="text" name="first_name" class="form-control" [(ngModel)]="booking.first_name" required>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error.first_name">
+            {{ error.first_name }}
         </div>
         <div class="form-group">
             <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" class="form-control" [(ngModel)]="booking.last_name">
+            <input type="text" name="last_name" class="form-control" [(ngModel)]="booking.last_name" required>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error.last_name">
+            {{ error.last_name }}
         </div>
         <div class="form-group">
             <label for="room_id">Room</label>
             <mat-form-field>
-                <mat-select name="room_id" class="form-control" [(ngModel)]="booking.room_id">
+                <mat-select name="room_id" class="form-control" [(ngModel)]="booking.room_id" required>
                   @for (room of rooms; track room) {
                     <mat-option [value]="room.id">{{room.number}}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
         </div>
+        <div class="alert alert-danger" [hidden]="!error.room_id">
+            {{ error.room_id }}
+        </div>
         <div class="form-group">
             <label for="check_in">Check In</label>
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input name="check_in" class="form-control" matInput [matDatepicker]="check_in" [(ngModel)]="booking.check_in">
+                <input name="check_in" class="form-control" matInput [matDatepicker]="check_in" [(ngModel)]="booking.check_in" required>
                 <mat-datepicker-toggle matIconSuffix [for]="check_in"></mat-datepicker-toggle>
                 <mat-datepicker #check_in></mat-datepicker>
             </mat-form-field>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error.check_in">
+            {{ error.check_in }}
         </div>
         <div class="form-group">
             <label for="check_out">Check Out</label>
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input name="check_out" class="form-control" matInput [matDatepicker]="check_out" [(ngModel)]="booking.check_out">
+                <input name="check_out" class="form-control" matInput [matDatepicker]="check_out" [(ngModel)]="booking.check_out" required>
                 <mat-datepicker-toggle matIconSuffix [for]="check_out"></mat-datepicker-toggle>
                 <mat-datepicker #check_out></mat-datepicker>
             </mat-form-field>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error.check_out">
+            {{ error.check_out }}
         </div>
     </div>
     <div class="modal-footer">

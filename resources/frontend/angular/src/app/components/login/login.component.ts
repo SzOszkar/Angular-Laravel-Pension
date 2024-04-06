@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private auth:AuthService  
   ) { }
-  public error = null;
+  public error:any = [];
   
   ngOnInit(): void {
 

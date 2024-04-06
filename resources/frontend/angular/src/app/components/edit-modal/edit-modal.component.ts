@@ -14,6 +14,7 @@ export class EditModalContent {
   user:any;
   existingBooking:any;
   booking = new Booking();
+  public error:any = [];
 
   @Input() bookingId: any;
   
@@ -46,10 +47,19 @@ export class EditModalContent {
   }
 
   editData() {
-    this.crud.editBooking(this.booking, this.bookingId).subscribe(result =>{
-      window.location.reload();
-    });
+    this.crud.editBooking(this.booking, this.bookingId).subscribe(
+      result=>this.handleResponse(result),
+      error=>this.handleError(error)
+    );
+  }
+
+  handleError(error:any){
+    this.error = error.error.errors;
+  }
+
+  handleResponse(result:any){
     this.activeModal.close("Submit");
+    window.location.reload();
   }
 }
 

@@ -16,14 +16,12 @@ export class AddModalContent {
   rooms:any;
   booking = new Booking();
   user:any;
+  public error:any = [];
 
   constructor(
     public activeModal: NgbActiveModal, 
     private data: DataService,
-    private laravel: LaravelService,
     private crud: CrudService,
-    private router: Router,
-    private token: TokenService
   ) { }
 
   ngOnInit(): void {
@@ -41,10 +39,19 @@ export class AddModalContent {
   }
 
   insertData() {
-    this.crud.addBooking(this.booking).subscribe(result => {
-      window.location.reload();
-    });
+    this.crud.addBooking(this.booking).subscribe(
+      result=>this.handleResponse(result),
+      error=>this.handleError(error)
+    );
+  }
+
+  handleError(error:any){
+    this.error = error.error.errors;
+  }
+
+  handleResponse(result:any){
     this.activeModal.close("Submit");
+    window.location.reload();
   }
 }
 

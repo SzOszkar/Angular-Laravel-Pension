@@ -9,6 +9,13 @@ class BookingController extends Controller
 {
     public function addBooking(Request $request) {
         $data = $request->all();
+        $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'room_id'    => 'required',
+            'check_in'   => 'required',
+            'check_out'  => 'required',
+        ]);
 
         $booking = new Booking();
         $booking->first_name    = $data['first_name'];
@@ -34,6 +41,14 @@ class BookingController extends Controller
     public function editBooking($id, Request $request) {
         $data = $request->all();
         if(!empty($data)){
+            $request->validate([
+                'first_name' => 'required',
+                'last_name'  => 'required',
+                'room_id'    => 'required',
+                'check_in'   => 'required',
+                'check_out'  => 'required',
+            ]);
+            
             $booking = Booking::find($id);
             if(is_null($booking)){
                 return response()->json(['message' => 'Not found'], 404);
