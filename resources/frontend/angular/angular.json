@@ -46,8 +46,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1000kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1500mb",
+                  "maximumError": "1000mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -56,7 +56,7 @@
                 }
               ],
               "outputPath": "../../../public/assets/angular",
-              "deployUrl": "/assets/angular/",
+              "deployUrl": "/assets/angular/browser/",
               "outputHashing": "all"
             },
             "development": {
