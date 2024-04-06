@@ -1,0 +1,50 @@
+<form (ngSubmit)="insertData()">
+    <div class="modal-header">
+        <h4 class="modal-title">Add Booking</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" class="form-control" [(ngModel)]="booking.first_name">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" class="form-control" [(ngModel)]="booking.last_name">
+        </div>
+        <div class="form-group">
+            <label for="room_id">Room</label>
+            <mat-form-field>
+                <mat-select name="room_id" class="form-control" [(ngModel)]="booking.room_id">
+                  @for (room of rooms; track room) {
+                    <mat-option [value]="room.id">{{room.number}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <label for="check_in">Check In</label>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input name="check_in" class="form-control" matInput [matDatepicker]="check_in" [(ngModel)]="booking.check_in">
+                <mat-datepicker-toggle matIconSuffix [for]="check_in"></mat-datepicker-toggle>
+                <mat-datepicker #check_in></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <label for="check_out">Check Out</label>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input name="check_out" class="form-control" matInput [matDatepicker]="check_out" [(ngModel)]="booking.check_out">
+                <mat-datepicker-toggle matIconSuffix [for]="check_out"></mat-datepicker-toggle>
+                <mat-datepicker #check_out></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button  class="btn btn-outline-success" (click)="onClick()">Submit</button>
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</form>
