@@ -15,6 +15,7 @@ Route::group(['middleware' => CORS::class], function() {
         Route::post('add-booking',              [BookingController::class, 'addBooking']);
         Route::get('get-current-user',          [UserController::class, 'getCurrentUser']);
         Route::get('is-admin',                  [UserController::class, 'isAdmin']);
+        Route::get('get-user-bookings',         [BookingController::class, 'getUserBookings']);
     });
     Route::get('get-bookings',                  [BookingController::class, 'getBookings']);
     Route::get('get-booking/{id}',              [BookingController::class, 'getBooking']);
@@ -24,4 +25,6 @@ Route::group(['middleware' => CORS::class], function() {
     Route::get('get-rooms',                     [RoomController::class, 'getRooms']);
     
     Route::get('get-role/{id}',                 [RoleController::class, 'getRole']);
+
+    Route::get('get-user/{id}',                 [UserController::class, 'getUser']);
 });

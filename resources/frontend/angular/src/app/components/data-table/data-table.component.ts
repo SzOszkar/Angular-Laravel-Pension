@@ -1,4 +1,5 @@
 import { CrudService } from '../../services/crud.service';
+import { LaravelService } from '../../services/laravel.service';
 import { DataService } from './../../services/data.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,17 +11,31 @@ import { Router } from '@angular/router';
 })
 export class DataTableComponent {
   bookings:any;
+  role:any;
   
   constructor(
-    private data:DataService, 
+    private data:DataService,
+    private laravel:LaravelService, 
   ) {}
 
   ngOnInit(): void {
-    this.getBookingData();
+    this.laravel.checkIfAdmin().subscribe(result => {
+      if(result == true) {
+        this.getBookingData();
+      } else {
+        this.getUserBookingsData();
+      }
+    })
   }
 
   getBookingData() {
     this.data.getBookings().subscribe(result =>{
+      this.bookings = result;
+    });
+  }
+
+  getUserBookingsData() {
+    this.data.getUserBookings().subscribe(result =>{
       this.bookings = result;
     });
   }

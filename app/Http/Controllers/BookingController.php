@@ -30,12 +30,18 @@ class BookingController extends Controller
     }
 
     public function getBookings() {
-        return response()->json(Booking::all(), 200);
+        $bookings = Booking::all();
+        return $this->transformBookings($bookings);
     }
 
     public function getBooking($id) {
         $booking = Booking::find($id);
         return response()->json($booking, 200);
+    }
+
+    public function getUserBookings() {
+        $bookings = Booking::where('user_id', auth()->user()->id)->get();
+        return $this->transformBookings($bookings);
     }
 
     public function editBooking($id, Request $request) {
@@ -64,6 +70,25 @@ class BookingController extends Controller
             return response($booking, 200);
         }
     }
+
+    protected function transformBookings($bookings)
+{
+    $editedBookings = $bookings->map(function ($booking) {
+        return [
+            'id' => $booking->id,
+            'user_id' => $booking->user_id,
+            'username' => $booking->user->username,
+            'first_name' => $booking->first_name,
+            'last_name' => $booking->last_name,
+            'room_id' => $booking->room_id,
+            'room_number' => $booking->room->number,
+            'check_in' => $booking->check_in,
+            'check_out' => $booking->check_out,
+        ];
+    });
+
+    return response()->json($editedBookings, 200);
+}
 
     public function deleteBooking($id) {
         $booking = Booking::find($id);

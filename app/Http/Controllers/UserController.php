@@ -12,6 +12,11 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
+    public function getUser($id) {
+        $user = User::find($id);
+        return response()->json($user, 200);
+    }
+
     public function isAdmin() {
         $user = User::find(auth()->user()->id);
         $role = Role::where('name', 'admin')->first();

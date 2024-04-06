@@ -25,9 +25,9 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['username', 'password']);
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Email or Password do not match!'], 401);
+            return response()->json(['error' => 'Username or Password do not match!'], 401);
         }
 
         return $this->respondWithToken($token);
