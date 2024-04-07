@@ -1,13 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrudService } from '../../services/crud.service';
 import { Booking } from '../../classes/booking';
 import { DataService } from './../../services/data.service';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 @Component({
   selector: 'edit-modal-content',
   templateUrl: './edit-modal-content.component.html',
-  styleUrl: './edit-modal.component.css'
+  styleUrl: './edit-modal.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class EditModalContent {
   rooms:any;
@@ -15,6 +17,10 @@ export class EditModalContent {
   existingBooking:any;
   booking = new Booking();
   public error:any = [];
+  minDate = new Date();
+  dateFilter: DateFilterFn<Date | null> = (date: Date | null) => {
+    return !!date && date >= this.minDate;
+  }
 
   @Input() bookingId: any;
   

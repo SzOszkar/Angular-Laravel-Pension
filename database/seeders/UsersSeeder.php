@@ -18,18 +18,18 @@ class UsersSeeder extends Seeder
         if (User::count() == 0) {
             DB::table('users')->insert([
                     [
-                        'username' => 'SzOszkar',
-                        'first_name' => 'Oszkar',
-                        'last_name' => 'Szilagyi',
-                        'email' => 'szilagyi_oszkar@yahoo.com',
+                        'username' => 'Admin',
+                        'first_name' => 'Admin',
+                        'last_name' => 'Testing',
+                        'email' => 'admin_testing@yahoo.com',
                         'password' => Hash::make('1q2w3e4r'),
                         'role_id' => 1,
                     ],
                     [
-                        'username' => 'testCustomer',
+                        'username' => 'Customer',
                         'first_name' => 'Customer',
-                        'last_name' => 'Test',
-                        'email' => 'customer_test@yahoo.com',
+                        'last_name' => 'Testing',
+                        'email' => 'customer_testing@yahoo.com',
                         'password' => Hash::make('1q2w3e4r'),
                         'role_id' => 2,
                     ]

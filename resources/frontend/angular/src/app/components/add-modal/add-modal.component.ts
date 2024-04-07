@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from './../../services/data.service';
 import { Booking } from '../../classes/booking';
@@ -6,18 +6,23 @@ import { LaravelService } from '../../services/laravel.service';
 import { CrudService } from '../../services/crud.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../../services/token.service';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 @Component({
   selector: 'add-modal-content',
   templateUrl: './add-modal-content.component.html',
-  styleUrl: './add-modal.component.css'
+  styleUrl: './add-modal.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class AddModalContent {
   rooms:any;
   booking = new Booking();
   user:any;
   public error:any = [];
-
+  minDate = new Date();
+  dateFilter: DateFilterFn<Date | null> = (date: Date | null) => {
+    return !!date && date >= this.minDate;
+  }
   constructor(
     public activeModal: NgbActiveModal, 
     private data: DataService,

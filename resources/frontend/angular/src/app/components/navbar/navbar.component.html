@@ -3,6 +3,7 @@
         <div class="container-fluid">
             <a [routerLink]="['/dashboard']" class="navbar-brand">Dashboard</a>
             <div>
+                <!-- <a [routerLink]="['/data-table']" *ngIf="isAdmin" class="navbar-brand">Table</a> -->
                 <a [routerLink]="['/data-table']" *ngIf="loggedIn" class="navbar-brand">Table</a>
             </div>
             <div>

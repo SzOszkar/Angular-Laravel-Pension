@@ -3,3 +3,21 @@
 @import '../node_modules/bootstrap-icons/font/bootstrap-icons.min.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-text-field--filled:hover {
+    background-color: white !important;
+}
+
+.mat-mdc-form-field {
+    width: 100% !important;
+}
+
+.mdc-text-field {
+    padding: 0 0 !important;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}

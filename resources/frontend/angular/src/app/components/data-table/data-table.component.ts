@@ -1,8 +1,6 @@
-import { CrudService } from '../../services/crud.service';
 import { LaravelService } from '../../services/laravel.service';
 import { DataService } from './../../services/data.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',

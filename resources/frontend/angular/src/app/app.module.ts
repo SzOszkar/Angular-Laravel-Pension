@@ -19,6 +19,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { EditModalComponent, EditModalContent } from './components/edit-modal/edit-modal.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -43,9 +46,12 @@ import { EditModalComponent, EditModalContent } from './components/edit-modal/ed
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    FullCalendarModule,
+    MatFormFieldModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })
