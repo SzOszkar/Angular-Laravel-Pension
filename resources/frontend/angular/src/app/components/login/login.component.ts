@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class LoginComponent implements OnInit {
   public form = {
-    email:null,
+    username:null,
     password:null
   }
   constructor(
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private auth:AuthService  
   ) { }
-  public error = null;
+  public error:any = null;
   
   ngOnInit(): void {
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     );
   }
   handleError(error:any) {
-    this.error = error.error.error;
+    this.error = error?.error?.error || null;
   }
   handleResponse(data:any){
     this.token.handle(data.access_token);

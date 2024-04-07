@@ -1,0 +1,32 @@
+<div class="container text-end mt-3">
+    <add-modal-component></add-modal-component>
+</div>
+<div class="container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Name</th>
+                <th scope="col">Room</th>
+                <th scope="col">Check In</th>
+                <th scope="col">Check Out</th>
+                <th scope="col" class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookings; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ booking.username }}</td>
+                <td>{{ booking.last_name }} {{ booking.first_name }}</td>
+                <td>{{ booking.room_number }}</td>
+                <td>{{ booking.check_in }}</td>
+                <td>{{ booking.check_out }}</td>
+                <td class="text-end">
+                    <edit-modal-component   [bookingId]="booking.id"></edit-modal-component>
+                    <delete-modal-component [bookingId]="booking.id"></delete-modal-component>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

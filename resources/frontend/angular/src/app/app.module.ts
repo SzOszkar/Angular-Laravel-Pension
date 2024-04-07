@@ -10,14 +10,31 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import { DataTableComponent } from './components/data-table/data-table.component';
+import { AddModalComponent, AddModalContent } from './components/add-modal/add-modal.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { EditModalComponent, EditModalContent } from './components/edit-modal/edit-modal.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    DataTableComponent,
+    AddModalContent,
+    AddModalComponent,
+    DeleteModalComponent,
+    EditModalComponent,
+    EditModalContent,
   ],
   imports: [
     BrowserModule,
@@ -25,8 +42,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    FullCalendarModule,
+    MatFormFieldModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,15 @@
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
-        <div>
-            <a [routerLink]="['/login']" *ngIf="!loggedIn" class="navbar-brand">Login</a>
-            <a href="#"  (click)="logout($event)" *ngIf="loggedIn" class="navbar-brand">Logout</a>
+<div class="navbar-bg navbar-text">
+    <nav class="container navbar navbar-light navbar-bg">
+        <div class="container-fluid">
+            <a [routerLink]="['/dashboard']" class="navbar-brand">Dashboard</a>
+            <div>
+                <!-- <a [routerLink]="['/data-table']" *ngIf="isAdmin" class="navbar-brand">Table</a> -->
+                <a [routerLink]="['/data-table']" *ngIf="loggedIn" class="navbar-brand">Table</a>
+            </div>
+            <div>
+                <a [routerLink]="['/login']" *ngIf="!loggedIn" class="navbar-brand">Login</a>
+                <a href="#"  (click)="logout($event)" *ngIf="loggedIn" class="navbar-brand">Logout</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>

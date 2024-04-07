@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -25,9 +25,9 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['username', 'password']);
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Email or Password do not match!'], 401);
+            return response()->json(['error' => 'Username or Password do not match!'], 401);
         }
 
         return $this->respondWithToken($token);
