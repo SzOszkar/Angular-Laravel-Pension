@@ -1,7 +1,7 @@
 <div class="navbar-bg navbar-text">
     <nav class="container navbar navbar-light navbar-bg">
         <div class="container-fluid">
-            <a [routerLink]="['/dashboard']" class="navbar-brand">Dashboard</a>
+            <a [routerLink]="['/dashboard']" *ngIf="loggedIn" class="navbar-brand">Dashboard</a>
             <div>
                 <!-- <a [routerLink]="['/data-table']" *ngIf="isAdmin" class="navbar-brand">Table</a> -->
                 <a [routerLink]="['/data-table']" *ngIf="loggedIn" class="navbar-brand">Table</a>
